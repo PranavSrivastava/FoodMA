@@ -27,7 +27,7 @@ public class Detail extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth;
     private ClipData.Item i;
     private EditText et1,et2;
-    private Button b1,b2;
+    private Button b1;
     private DatabaseReference databaseReference;
     private Button map;
 
