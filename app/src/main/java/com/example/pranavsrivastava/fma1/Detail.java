@@ -1,6 +1,7 @@
 package com.example.pranavsrivastava.fma1;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.example.pranavsrivastava.fma1.R.id.map;
+
 /**
  * Created by Pranav Srivastava on 03-Mar-18.
  */
@@ -26,6 +29,7 @@ public class Detail extends AppCompatActivity implements View.OnClickListener {
     private EditText et1,et2;
     private Button b1;
     private DatabaseReference databaseReference;
+    private Button map;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,18 @@ public class Detail extends AppCompatActivity implements View.OnClickListener {
         et2=(EditText) findViewById(R.id.et2);
         b1= (Button) findViewById(R.id.b1);
         b1.setOnClickListener(this);
+		 map= (Button) findViewById(R.id.map);
+		 map.setOnClickListener(this);
+
+    }
+	
+	@Override
+    protected void onResume() {
+        super.onResume();
+        if(et2!=null)
+        {
+            et2.setText(MapsActivity.locality+MapsActivity.country);
+        }
 
     }
     private void saveinfo()
@@ -63,6 +79,9 @@ public class Detail extends AppCompatActivity implements View.OnClickListener {
                 saveinfo();
                 finish();
                 break;
+			case R.id.map:
+                Intent intent =new Intent(Detail.this,MapsActivity.class);
+                startActivity(intent);
         }
 
     }

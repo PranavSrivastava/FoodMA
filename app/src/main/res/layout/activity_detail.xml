@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tool_bar"
         android:background="@color/colorPrimary"
-        android:elevation="4dp" />
+        android:elevation="4dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -19,7 +21,9 @@
         android:ems="10"
         android:id="@+id/et1"
         android:layout_weight="0.21"
-        android:hint="Enter Food Detail" />
+        android:hint="Enter Food Detail"
+        android:layout_below="@+id/tool_bar"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -27,13 +31,28 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/et2"
-        android:hint="Enter Address" />
+        android:hint="Enter Address"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/et1"
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Submit"
+        android:id="@+id/b1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/b1" />
+        android:text="Submit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:layout_marginTop="73dp"
+        android:layout_below="@+id/et2"
+        android:layout_alignStart="@+id/et2" />
 
 
-</LinearLayout>
+</RelativeLayout>

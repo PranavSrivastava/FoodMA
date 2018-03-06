@@ -16,4 +16,12 @@ public class Data {
         this.address = address;
         this.food = food;
     }
+
+    public String getFood() {
+        return food;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }
