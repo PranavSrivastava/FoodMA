@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity implements
     private Button mVerifyButton;
     private Button mResendButton;
     private Button mSignOutButton;
+    private ProgressBar spinner;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements
         mVerifyButton.setOnClickListener(this);
         mResendButton.setOnClickListener(this);
         mSignOutButton.setOnClickListener(this);
+
+        spinner = (ProgressBar)findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -203,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void startPhoneNumberVerification(String phoneNumber) {
         // [START start_phone_auth]
+        spinner.setVisibility(View.VISIBLE);
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 phoneNumber,        // Phone number to verify
                 60,                 // Timeout duration

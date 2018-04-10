@@ -19,6 +19,9 @@
 
     <string name="label_phone_auth">Phone Number Authentication</string>
     <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
+    <string name="ok">Sign In</string>
+    <string name="cancel">Cancel</string>
+    <string name="dialog_fire_missiles">Please SignIn to upload Food Information</string>
 
     <string name="label_anonymous_auth">Anonymous Authentication</string>
     <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
