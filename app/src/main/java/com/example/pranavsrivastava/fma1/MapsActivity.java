@@ -1,9 +1,13 @@
 package com.example.pranavsrivastava.fma1;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
+import android.location.Criteria;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -17,11 +21,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.*;
+
+import static com.example.pranavsrivastava.fma1.R.id.map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -42,10 +49,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             setStatusBarTranslucent(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
         resutText = (TextView) findViewById(R.id.dragg_result);
         Ok = (Button) findViewById(R.id.Ok);
+
+       // mMap.set
+
 
         configureCameraIdle();
     }
@@ -65,15 +75,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 
-
         mMap.setOnCameraIdleListener(onCameraIdleListener);
     }
+
     private void configureCameraIdle() {
         onCameraIdleListener = new GoogleMap.OnCameraIdleListener() {
             @Override
             public void onCameraIdle() {
 
-                LatLng latLng = mMap.getCameraPosition().target;
+
+
+            LatLng latLng = mMap.getCameraPosition().target;
                 Geocoder geocoder = new Geocoder(MapsActivity.this);
 
                 try {

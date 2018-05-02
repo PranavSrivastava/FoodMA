@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ public class List1 extends AppCompatActivity implements View.OnClickListener
         FloatingActionButton fab=(FloatingActionButton)findViewById(R.id.fab);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
-
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
         listView=(ListView) findViewById(R.id.listView);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Details");
